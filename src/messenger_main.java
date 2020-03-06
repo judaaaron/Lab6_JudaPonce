@@ -34,9 +34,8 @@ public class messenger_main extends javax.swing.JFrame {
 
         }
 
-        for (int i = 0; i < ap.getPersonitas().size(); i++) {
-            area2.append("\n" + ap.getPersonitas().get(i).getDisplay());
-
+        for (int i = 0; i < personas.size(); i++) {
+            area2.append("\n" + personas.get(i).getDisplay());
         }
     }
 
@@ -159,7 +158,9 @@ public class messenger_main extends javax.swing.JFrame {
         chat.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 490, 470));
 
         area2.setColumns(20);
+        area2.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         area2.setRows(5);
+        area2.setText("CONTACTOS");
         jScrollPane2.setViewportView(area2);
 
         chat.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 200, 470));
@@ -178,10 +179,20 @@ public class messenger_main extends javax.swing.JFrame {
 
         bt_guardarConversacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/document.png"))); // NOI18N
         bt_guardarConversacion.setContentAreaFilled(false);
+        bt_guardarConversacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_guardarConversacionMouseClicked(evt);
+            }
+        });
         chat.getContentPane().add(bt_guardarConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, 80, 70));
 
         bt_Salir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logout (1).png"))); // NOI18N
         bt_Salir2.setContentAreaFilled(false);
+        bt_Salir2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_Salir2MouseClicked(evt);
+            }
+        });
         chat.getContentPane().add(bt_Salir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 570, 80, 70));
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
@@ -221,6 +232,11 @@ public class messenger_main extends javax.swing.JFrame {
         bt_Ingresar.setContentAreaFilled(false);
         bt_Ingresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entry.png"))); // NOI18N
         bt_Ingresar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entry.png"))); // NOI18N
+        bt_Ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_IngresarMouseClicked(evt);
+            }
+        });
         getContentPane().add(bt_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 80, 90));
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
@@ -242,6 +258,11 @@ public class messenger_main extends javax.swing.JFrame {
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("¿No tienes cuenta?  Click here");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, -1));
 
         jl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wallMessenger.jpg"))); // NOI18N
@@ -266,37 +287,36 @@ public class messenger_main extends javax.swing.JFrame {
 
         personas.add(new Usuario(nombre, password, display, calendario));
         boolean control = false;
-        for (int i = 0; i < personas.size(); i++) {
-            if (personas.get(i).getDisplay().equals(display)) {
-                JOptionPane.showMessageDialog(this, "Lo sentimos este nombre de usuario ya exite");
-                control = true;
-                tf_usuario.setText("");
-                break;
+//        for (int i = 0; i < personas.size(); i++) {
+//            if (personas.get(i).getDisplay().equals(display)) {
+//                JOptionPane.showMessageDialog(this, "Lo sentimos este nombre de usuario ya exite");
+//                control = true;
+//                tf_usuario.setText("");
+//                break;
+//
+//            } else {
+//                control = false;
+//            }
+//
+//        }
 
-            } else {
-                control = false;
-            }
+        adminUsuarios ap = new adminUsuarios("./Users.txt");
+        //ap.cargarArchivo();
+        Usuario p = new Usuario(nombre, password, display, calendario);
+        ap.getPersonitas().add(p);
 
+        try {
+            ap.escribirArchivo();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex);
         }
-        if (control == false) {
-            adminUsuarios ap = new adminUsuarios("./Users.txt");
-            //ap.cargarArchivo();
-            Usuario p = new Usuario(nombre, password, display, calendario);
-            ap.getPersonitas().add(p);
 
-            try {
-                ap.escribirArchivo();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, ex);
-            }
+        JOptionPane.showMessageDialog(this, " Ha sido registrado exitosamente");
 
-            JOptionPane.showMessageDialog(this, " Ha sido registrado exitosamente");
+        tf_user.setText("");
+        tf_contra.setText("");
+        tf_usuario.setText("");
 
-            tf_user.setText("");
-            tf_contra.setText("");
-            tf_usuario.setText("");
-
-        }
 
     }//GEN-LAST:event_bt_RegistrarMouseClicked
 
@@ -305,60 +325,84 @@ public class messenger_main extends javax.swing.JFrame {
         MetodosCadena m = new MetodosCadena();
         int pos = cadena.indexOf(':');// uso del index of para saber su posicion y asi poder usar el metodo de substring
         String nueva = cadena.substring(pos + 2, cadena.length());
-        String neww = cadena.substring(pos + 2, cadena.length() - 1);
-        if (nueva.length() < 13) {
-            JOptionPane.showMessageDialog(null, "La cadena debe de ser mayor a 13");
-        } else if (nueva.length() >= 13 && nueva.charAt(nueva.length() - 1) == '1') {
+        neww = cadena.substring(pos + 2, cadena.length() - 1);
+        if (nueva.charAt(nueva.length() - 1) == '1') {
             JOptionPane.showMessageDialog(null, "entro a la opcion1");
-            String nueva2 = m.concatenado(neww);
-            area1.setText("Usuario: " + neww + "\n" + "Maquina: " + nueva2);
+            nueva2 = m.concatenado(neww);
+            area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
             tf_metodos.setText("");
-            String archi = JOptionPane.showInputDialog(null, "Escriba el nombre del archivo para guardar el chat");
-            System.out.println("./" + archi + ".txt");
-            ClaseMensajes ch = new ClaseMensajes("./" + archi + ".txt");
-            docs = "Usuario: " + neww + "Maquina: " + nueva2;
-            try {
-                ch.escribirArchivo(docs);
-            } catch (IOException ex) {
-              //  Logger.getLogger(MainMessenger.class.getName()).log(Level.SEVERE, null, ex);
-            }
 
-        } else if (nueva.length() >= 13 && nueva.charAt(nueva.length() - 1) == '2') {
+        } else if (nueva.charAt(nueva.length() - 1) == '2') {
             JOptionPane.showMessageDialog(null, "entro a la opcion2");
-            String nn = m.ReplaceAscii(neww);
+            nueva2 = m.ReplaceAscii(neww);
 
-            area1.setText("Usuario: " + neww + "\n" + "Maquina: " + nn + " ");
+            area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
             tf_metodos.setText("");
-            String archi = JOptionPane.showInputDialog(null, "Escriba el nombre del archivo para guardar el chat");
-            System.out.println("./" + archi + ".txt");
-            ClaseMensajes ch = new ClaseMensajes("./" + archi + ".txt");
-            docs = "Usuario: " + neww + "Maquina: " + nn;
-            try {
-                ch.escribirArchivo(docs);
-            } catch (IOException ex) {
-              //  --Logger.getLogger(MainMessenger.class.getName()).log(Level.SEVERE, null, ex);
-            }
 
-        } else if (nueva.length() >= 13 && nueva.charAt(nueva.length() - 1) == '3') {
+        } else if (nueva.charAt(nueva.length() - 1) == '3') {
             JOptionPane.showMessageDialog(null, "entro a la opcion 3");
-            String nueva2 = m.patron3(neww);
-            area1.setText("Usuario: " + neww + "\n" + "Maquina: " + nueva2);
+            nueva2 = m.patron3(neww);
+            area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
             tf_metodos.setText("");
-            String archi = JOptionPane.showInputDialog(null, "Escriba el nombre del archivo para guardar el chat");
-            System.out.println("./" + archi + ".txt");
-            ClaseMensajes ch = new ClaseMensajes("./" + archi + ".txt");
-            docs = "Usuario: " + neww + "Maquina: " + nueva2;
-            try {
-                ch.escribirArchivo(docs);
-            } catch (IOException ex) {
-                //Logger.getLogger(MainMessenger.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
         } else if (nueva.length() >= 13 && nueva.charAt(nueva.length() - 1) == '4') {
             JOptionPane.showMessageDialog(null, "entro a la opcion 4");
         } else {
             JOptionPane.showMessageDialog(null, "La cadena no posee ningun numero dentro del rango solicitado");
         }
     }//GEN-LAST:event_bt_enviarMensajeMouseClicked
+
+    private void bt_IngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_IngresarMouseClicked
+        String dis = tf_user.getText();
+        String pas = tf_password.getText();
+        boolean entrar = false;
+        tf_metodos.setText(dis + ": ");
+
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i).getDisplay().equals(dis) && personas.get(i).getPassword().equals(pas)) {
+
+                JOptionPane.showMessageDialog(this, " Bienvenido " + dis);
+                chat.pack();
+                chat.setModal(true);
+                chat.setLocationRelativeTo(this);
+                chat.setVisible(true);
+
+                entrar = true;
+                // flag = i;
+                tf_user.setText("");
+                tf_password.setText("");
+
+                break;
+
+            }
+
+        }
+        //  System.out.println(entrar);
+
+        if (entrar == false) {
+            JOptionPane.showMessageDialog(this, " Usuario y/o contraseña ");
+            tf_user.setText("");
+            tf_password.setText("");
+        }
+    }//GEN-LAST:event_bt_IngresarMouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+
+        jd_registrarse.pack();
+        jd_registrarse.setModal(true);
+        jd_registrarse.setLocationRelativeTo(this);
+        jd_registrarse.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void bt_guardarConversacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardarConversacionMouseClicked
+        String archi = JOptionPane.showInputDialog(null, "Escriba el nombre del archivo para guardar el chat");
+        ClaseMensajes ch = new ClaseMensajes("./" + archi + ".txt");
+        docs = "Usuario: " + neww + "Maquina: " + nueva2;
+    }//GEN-LAST:event_bt_guardarConversacionMouseClicked
+
+    private void bt_Salir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Salir2MouseClicked
+        chat.setVisible(false);
+    }//GEN-LAST:event_bt_Salir2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -435,6 +479,6 @@ public class messenger_main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_usuario;
     // End of variables declaration//GEN-END:variables
 ArrayList<Usuario> personas = new ArrayList();
-    String docs;
+    String docs, neww, nueva2;
 
 }
