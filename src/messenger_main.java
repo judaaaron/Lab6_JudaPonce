@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -254,6 +255,11 @@ public class messenger_main extends javax.swing.JFrame {
         bt_salir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit (1).png"))); // NOI18N
         bt_salir.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit (1).png"))); // NOI18N
         bt_salir.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit.png"))); // NOI18N
+        bt_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_salirMouseClicked(evt);
+            }
+        });
         getContentPane().add(bt_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 120, 100));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,42 +286,52 @@ public class messenger_main extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_atrasMouseClicked
 
     private void bt_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_RegistrarMouseClicked
+        int v = new Date().getYear();
+        int cal = j_calendario.getDate().getYear();
         String nombre = tf_nombre.getText();
         String password = tf_contra.getText();
         String display = tf_usuario.getText();
         String calendario = j_calendario.getDate().toString();
+        if (v - cal <= 13) {
+            JOptionPane.showMessageDialog(null, "Lo sentimos no tienes la edad para usar nuestra app");
 
-        personas.add(new Usuario(nombre, password, display, calendario));
-        boolean control = false;
-//        for (int i = 0; i < personas.size(); i++) {
-//            if (personas.get(i).getDisplay().equals(display)) {
-//                JOptionPane.showMessageDialog(this, "Lo sentimos este nombre de usuario ya exite");
-//                control = true;
-//                tf_usuario.setText("");
-//                break;
-//
-//            } else {
-//                control = false;
-//            }
-//
-//        }
+        } else {
+            boolean control = false;
+            for (int i = 0; i < personas.size(); i++) {
+                if (personas.get(i).getDisplay().equals(display)) {
+                    // System.out.println(personas.get(i).getDisplay());
+                    JOptionPane.showMessageDialog(this, "Lo sentimos este nombre de usuario ya exite");
+                    control = true;
+                    tf_usuario.setText("");
+                    break;
 
-        adminUsuarios ap = new adminUsuarios("./Users.txt");
-        //ap.cargarArchivo();
-        Usuario p = new Usuario(nombre, password, display, calendario);
-        ap.getPersonitas().add(p);
+                } else {
+                    control = false;
+                }
 
-        try {
-            ap.escribirArchivo();
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, ex);
+            }
+            adminUsuarios ap = new adminUsuarios("./Users.txt");
+            //ap.cargarArchivo();
+            Usuario p = new Usuario(nombre, password, display, calendario);
+            ap.getPersonitas().add(p);
+            personas.add(new Usuario(nombre, password, display, calendario));
+
+            if (control == false) {
+                try {
+                    ap.escribirArchivo();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, ex);
+                }
+
+                JOptionPane.showMessageDialog(this, " Ha sido registrado exitosamente");
+
+                tf_nombre.setText("");
+                tf_contra.setText("");
+                tf_usuario.setText("");
+
+            }
+
         }
-
-        JOptionPane.showMessageDialog(this, " Ha sido registrado exitosamente");
-
-        tf_user.setText("");
-        tf_contra.setText("");
-        tf_usuario.setText("");
 
 
     }//GEN-LAST:event_bt_RegistrarMouseClicked
@@ -398,11 +414,22 @@ public class messenger_main extends javax.swing.JFrame {
         String archi = JOptionPane.showInputDialog(null, "Escriba el nombre del archivo para guardar el chat");
         ClaseMensajes ch = new ClaseMensajes("./" + archi + ".txt");
         docs = "Usuario: " + neww + "Maquina: " + nueva2;
+        try {
+            ch.escribirArchivo(docs);
+            JOptionPane.showMessageDialog(null, "Su conversacion ha sido guardada con exito");
+        } catch (IOException ex) {
+            Logger.getLogger(messenger_main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_bt_guardarConversacionMouseClicked
 
     private void bt_Salir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Salir2MouseClicked
         chat.setVisible(false);
     }//GEN-LAST:event_bt_Salir2MouseClicked
+
+    private void bt_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_salirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_bt_salirMouseClicked
 
     /**
      * @param args the command line arguments
