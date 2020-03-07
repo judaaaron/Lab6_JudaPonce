@@ -85,6 +85,7 @@ public class messenger_main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         bt_salir = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jl_fondo = new javax.swing.JLabel();
 
         jd_registrarse.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,7 +93,7 @@ public class messenger_main extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Registrarse");
-        jd_registrarse.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, -1, -1));
+        jd_registrarse.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,23 +110,25 @@ public class messenger_main extends javax.swing.JFrame {
         jLabel10.setText("Fecha de nacimiento");
         jd_registrarse.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
-        bt_Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/forms.png"))); // NOI18N
+        bt_Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registration-form.png"))); // NOI18N
         bt_Registrar.setContentAreaFilled(false);
+        bt_Registrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registration-form (1).png"))); // NOI18N
         bt_Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_RegistrarMouseClicked(evt);
             }
         });
-        jd_registrarse.getContentPane().add(bt_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 80, 80));
+        jd_registrarse.getContentPane().add(bt_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 120, 80));
 
-        bt_atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/return64.png"))); // NOI18N
+        bt_atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/return.png"))); // NOI18N
         bt_atras.setContentAreaFilled(false);
+        bt_atras.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/return (1).png"))); // NOI18N
         bt_atras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_atrasMouseClicked(evt);
             }
         });
-        jd_registrarse.getContentPane().add(bt_atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 70, 80));
+        jd_registrarse.getContentPane().add(bt_atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 110, 80));
         jd_registrarse.getContentPane().add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 120, -1));
 
         tf_usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +143,7 @@ public class messenger_main extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Atrás");
-        jd_registrarse.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
+        jd_registrarse.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,32 +172,35 @@ public class messenger_main extends javax.swing.JFrame {
 
         bt_enviarMensaje.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         bt_enviarMensaje.setForeground(new java.awt.Color(255, 255, 255));
-        bt_enviarMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/plane.png"))); // NOI18N
+        bt_enviarMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/plane (1).png"))); // NOI18N
         bt_enviarMensaje.setContentAreaFilled(false);
+        bt_enviarMensaje.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/plane.png"))); // NOI18N
         bt_enviarMensaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_enviarMensajeMouseClicked(evt);
             }
         });
-        chat.getContentPane().add(bt_enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 80, 80));
+        chat.getContentPane().add(bt_enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 110, 80));
 
-        bt_guardarConversacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/document.png"))); // NOI18N
+        bt_guardarConversacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/document (1).png"))); // NOI18N
         bt_guardarConversacion.setContentAreaFilled(false);
+        bt_guardarConversacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/document.png"))); // NOI18N
         bt_guardarConversacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_guardarConversacionMouseClicked(evt);
             }
         });
-        chat.getContentPane().add(bt_guardarConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, 80, 70));
+        chat.getContentPane().add(bt_guardarConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 80, 110));
 
-        bt_Salir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logout (1).png"))); // NOI18N
+        bt_Salir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrow.png"))); // NOI18N
         bt_Salir2.setContentAreaFilled(false);
+        bt_Salir2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logout (1).png"))); // NOI18N
         bt_Salir2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_Salir2MouseClicked(evt);
             }
         });
-        chat.getContentPane().add(bt_Salir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 570, 80, 70));
+        chat.getContentPane().add(bt_Salir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 540, 80, 110));
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,7 +210,7 @@ public class messenger_main extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Enviar Mensaje");
-        chat.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, -1, -1));
+        chat.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 640, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,6 +276,12 @@ public class messenger_main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Messenger");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 240, 70));
 
         jl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wallMessenger.jpg"))); // NOI18N
         getContentPane().add(jl_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 500));
@@ -349,7 +361,6 @@ public class messenger_main extends javax.swing.JFrame {
             tf_metodos.setText("");
 
         } else if (cadena.charAt(cadena.length() - 1) == '2') {
-
             // nueva2 = m.lol(cadena);
             String mensaje = new String();
             for (int i = 0; i < neww.length(); i++) {
@@ -491,6 +502,7 @@ public class messenger_main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
