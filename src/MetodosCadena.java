@@ -98,16 +98,7 @@ public class MetodosCadena {
     }
     
     
-    public String lol(String cadena){
-        String cad="";
-        for (int i = 0; i < cadena.length(); i++) {
-            int x = cadena.charAt(i);
-            cad+=Integer.toString(x);
-        }
-        
-        
-        return cad;
-    }
+
     
    
     

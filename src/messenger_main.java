@@ -354,7 +354,31 @@ public class messenger_main extends javax.swing.JFrame {
         //int pos = cadena.indexOf(':');// uso del index of para saber su posicion y asi poder usar el metodo de substring
         // String nueva = cadena.substring(pos + 1, cadena.length());
         neww = cadena.substring(0, cadena.length() - 1);
-        if (cadena.charAt(cadena.length() - 1) == '1') {
+        boolean evaluar = false;
+
+        for (int i = 0; i < cadena.length(); i++) {
+            if (cadena.charAt(i) == '4') {
+                int pos = cadena.indexOf('4');
+                clave = cadena.substring(pos + 1, cadena.length());
+                clave2 = cadena.substring(0, pos);
+                evaluar = true;
+            }
+
+        }
+        if (evaluar == true) {
+            //   System.out.println(clave);
+            if (!clave.equals("KEWY")) {
+                clave = clave.toUpperCase();
+                neww = cadena.substring(0, cadena.length());
+                nueva2 = Cuatro(clave2);
+                area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
+                tf_metodos.setText("");
+
+            } else {
+                JOptionPane.showMessageDialog(null, " El mensaje no contiene la palabra clave, intente de nuevo");
+            }
+
+        } else if (cadena.charAt(cadena.length() - 1) == '1') {
 
             nueva2 = m.concatenado(neww);
             area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
@@ -380,11 +404,11 @@ public class messenger_main extends javax.swing.JFrame {
             area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
             tf_metodos.setText("");
 
-        } else if (cadena.charAt(cadena.length() - 1) == '4') {
-            JOptionPane.showMessageDialog(null, "entro a la opcion 4");
         } else {
             JOptionPane.showMessageDialog(null, "La cadena no posee ningun numero dentro del rango solicitado");
         }
+
+
     }//GEN-LAST:event_bt_enviarMensajeMouseClicked
 
     private void bt_IngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_IngresarMouseClicked
@@ -527,4 +551,50 @@ public class messenger_main extends javax.swing.JFrame {
 ArrayList<Usuario> personas = new ArrayList();
     String docs, neww, nueva2;
 
+    ArrayList<Character> K = new ArrayList();
+    ArrayList<Character> E = new ArrayList();
+    ArrayList<Character> Y = new ArrayList();
+    ArrayList<Character> W = new ArrayList();
+
+    public String Cuatro(String texto) {
+        int cont1 = 0, cont2 = 1, cont3 = 2, cont4 = 3;
+        String aqui = "";
+        for (int i = 0; i < texto.length() - 6; i++) {
+            if (texto.charAt(i) != ' ') {
+                aqui += texto.charAt(i);
+            }
+        }
+        for (int i = 0; i < aqui.length(); i++) {
+            if (i == cont1) {
+                K.add(aqui.charAt(i));
+                cont1 += 4;
+            } else if (i == cont2) {
+                E.add(aqui.charAt(i));
+                cont2 += 4;
+            } else if (i == cont3) {
+                Y.add(aqui.charAt(i));
+                cont3 += 4;
+            } else if (i == cont4) {
+                W.add(aqui.charAt(i));
+                cont4 += 4;
+            }
+        }
+        String listo = "";
+        for (Character o : E) {
+            listo += o;
+        }
+        for (Character o : K) {
+            listo += o;
+        }
+        for (Character o : W) {
+            listo += o;
+        }
+        for (Character o : Y) {
+            listo += o;
+        }
+        String i = listo.toUpperCase();
+        return i;
+    }
+
+    String clave, clave2;
 }
