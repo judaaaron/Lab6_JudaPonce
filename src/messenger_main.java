@@ -151,7 +151,7 @@ public class messenger_main extends javax.swing.JFrame {
         jd_registrarse.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         lb_fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wallMessenger.jpg"))); // NOI18N
-        jd_registrarse.getContentPane().add(lb_fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 500));
+        jd_registrarse.getContentPane().add(lb_fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 500));
 
         chat.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -180,7 +180,7 @@ public class messenger_main extends javax.swing.JFrame {
                 bt_enviarMensajeMouseClicked(evt);
             }
         });
-        chat.getContentPane().add(bt_enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 110, 80));
+        chat.getContentPane().add(bt_enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 110, 80));
 
         bt_guardarConversacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/document (1).png"))); // NOI18N
         bt_guardarConversacion.setContentAreaFilled(false);
@@ -190,7 +190,7 @@ public class messenger_main extends javax.swing.JFrame {
                 bt_guardarConversacionMouseClicked(evt);
             }
         });
-        chat.getContentPane().add(bt_guardarConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 80, 110));
+        chat.getContentPane().add(bt_guardarConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 80, 110));
 
         bt_Salir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrow.png"))); // NOI18N
         bt_Salir2.setContentAreaFilled(false);
@@ -200,7 +200,7 @@ public class messenger_main extends javax.swing.JFrame {
                 bt_Salir2MouseClicked(evt);
             }
         });
-        chat.getContentPane().add(bt_Salir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 540, 80, 110));
+        chat.getContentPane().add(bt_Salir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, 80, 110));
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,7 +284,7 @@ public class messenger_main extends javax.swing.JFrame {
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 240, 70));
 
         jl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wallMessenger.jpg"))); // NOI18N
-        getContentPane().add(jl_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 500));
+        getContentPane().add(jl_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
