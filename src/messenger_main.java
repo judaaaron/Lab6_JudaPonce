@@ -350,9 +350,17 @@ public class messenger_main extends javax.swing.JFrame {
 
         } else if (cadena.charAt(cadena.length() - 1) == '2') {
 
-            nueva2 = m.ReplaceAscii(neww);
-            System.out.println(nueva2);
-            area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
+            // nueva2 = m.lol(cadena);
+            String mensaje = new String();
+            for (int i = 0; i < neww.length(); i++) {
+                int ascii = neww.charAt(i);
+                if (ascii != 32) {
+                    mensaje += Integer.toString(ascii) + " ";
+                }
+
+            }
+
+            area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + mensaje);
             tf_metodos.setText("");
 
         } else if (cadena.charAt(cadena.length() - 1) == '3') {

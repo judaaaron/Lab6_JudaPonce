@@ -1,8 +1,8 @@
 
 public class MetodosCadena {
-
-    private char[][] matriz;
-
+    
+    private char [][] matriz;
+    
     public String concatenado(String cadena) {
         String cadenaFinal = "";
         String[] tokenEspacios = cadena.split(" ");
@@ -44,15 +44,22 @@ public class MetodosCadena {
         char c;
         int ascii, num = 0, letra;
         // chain = chain.toLowerCase()
-        for (int i = 0; i < chain.length(); i++) {
+         String[] tokenEspacios = chain.split(" ");
+        for (int i = 0; i < chain.length()-1; i++) {
             c = chain.charAt(i);
 
             ascii = c;// le asigno ascii el numero de posicion en donde se encuentra la letra
-            if (ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122) {
+            if (ascii >= 65 && ascii <= 90) {
                 num = ascii;
                 // System.out.print(num + " ");
+            } else if (tokenEspacios[ascii].length() >= 97 && tokenEspacios[ascii].length() <= 122) {// utilizando el
+                num = ascii;
+                // System.out.print(num + " ");
+
+            } else if (num == 0) {
+                System.out.print("");
             }
-            cadenaFinal += num;
+            cadenaFinal += num + " ";
         }
         // System.out.println();
         return cadenaFinal;
@@ -68,7 +75,7 @@ public class MetodosCadena {
                 int pos;
                 int resta;
                 int desplazamiento = 0;
-                if (tokens[i].charAt(j) >= 65 && tokens[i].charAt(j) <= 90) {
+                 if (tokens[i].charAt(j) >= 65 && tokens[i].charAt(j) <= 90) {
                     int letra = tokens[i].charAt(j);
                     pos = letra - 65;
                     resta = 25 - pos;
@@ -89,5 +96,19 @@ public class MetodosCadena {
         return acumOrden;
 
     }
-
+    
+    
+    public String lol(String cadena){
+        String cad="";
+        for (int i = 0; i < cadena.length(); i++) {
+            int x = cadena.charAt(i);
+            cad+=Integer.toString(x);
+        }
+        
+        
+        return cad;
+    }
+    
+   
+    
 }
