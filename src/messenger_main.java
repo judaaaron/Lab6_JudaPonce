@@ -339,29 +339,29 @@ public class messenger_main extends javax.swing.JFrame {
     private void bt_enviarMensajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_enviarMensajeMouseClicked
         String cadena = tf_metodos.getText();
         MetodosCadena m = new MetodosCadena();
-        int pos = cadena.indexOf(':');// uso del index of para saber su posicion y asi poder usar el metodo de substring
-        String nueva = cadena.substring(pos + 2, cadena.length());
-        neww = cadena.substring(pos + 2, cadena.length() - 1);
-        if (nueva.charAt(nueva.length() - 1) == '1') {
-            JOptionPane.showMessageDialog(null, "entro a la opcion1");
+        //int pos = cadena.indexOf(':');// uso del index of para saber su posicion y asi poder usar el metodo de substring
+        // String nueva = cadena.substring(pos + 1, cadena.length());
+        neww = cadena.substring(0, cadena.length() - 1);
+        if (cadena.charAt(cadena.length() - 1) == '1') {
+
             nueva2 = m.concatenado(neww);
             area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
             tf_metodos.setText("");
 
-        } else if (nueva.charAt(nueva.length() - 1) == '2') {
-            JOptionPane.showMessageDialog(null, "entro a la opcion2");
+        } else if (cadena.charAt(cadena.length() - 1) == '2') {
+
             nueva2 = m.ReplaceAscii(neww);
-
+            System.out.println(nueva2);
             area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
             tf_metodos.setText("");
 
-        } else if (nueva.charAt(nueva.length() - 1) == '3') {
-            JOptionPane.showMessageDialog(null, "entro a la opcion 3");
-            nueva2 = m.patron3(neww);
+        } else if (cadena.charAt(cadena.length() - 1) == '3') {
+
+            nueva2 = m.patron3(cadena);
             area1.append("\n" + "Usuario: " + neww + "\n" + "Maquina: " + nueva2);
             tf_metodos.setText("");
 
-        } else if (nueva.length() >= 13 && nueva.charAt(nueva.length() - 1) == '4') {
+        } else if (cadena.charAt(cadena.length() - 1) == '4') {
             JOptionPane.showMessageDialog(null, "entro a la opcion 4");
         } else {
             JOptionPane.showMessageDialog(null, "La cadena no posee ningun numero dentro del rango solicitado");
@@ -372,7 +372,6 @@ public class messenger_main extends javax.swing.JFrame {
         String dis = tf_user.getText();
         String pas = tf_password.getText();
         boolean entrar = false;
-        tf_metodos.setText(dis + ": ");
 
         for (int i = 0; i < personas.size(); i++) {
             if (personas.get(i).getDisplay().equals(dis) && personas.get(i).getPassword().equals(pas)) {
@@ -413,7 +412,7 @@ public class messenger_main extends javax.swing.JFrame {
     private void bt_guardarConversacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardarConversacionMouseClicked
         String archi = JOptionPane.showInputDialog(null, "Escriba el nombre del archivo para guardar el chat");
         ClaseMensajes ch = new ClaseMensajes("./" + archi + ".txt");
-        docs = "Usuario: " + neww + "Maquina: " + nueva2;
+        docs = area1.getText();
         try {
             ch.escribirArchivo(docs);
             JOptionPane.showMessageDialog(null, "Su conversacion ha sido guardada con exito");

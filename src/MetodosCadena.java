@@ -1,6 +1,8 @@
 
 public class MetodosCadena {
-    
+
+    private char[][] matriz;
+
     public String concatenado(String cadena) {
         String cadenaFinal = "";
         String[] tokenEspacios = cadena.split(" ");
@@ -41,23 +43,16 @@ public class MetodosCadena {
         String cadenaFinal = " ";
         char c;
         int ascii, num = 0, letra;
-        // chain = chain.toLowerCase();
-        System.out.print("Maquina: ");
+        // chain = chain.toLowerCase()
         for (int i = 0; i < chain.length(); i++) {
             c = chain.charAt(i);
 
             ascii = c;// le asigno ascii el numero de posicion en donde se encuentra la letra
-            if (ascii >= 65 && ascii <= 90) {
+            if (ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122) {
                 num = ascii;
                 // System.out.print(num + " ");
-            } else if (ascii >= 97 && ascii <= 122) {// utilizando el
-                num = ascii;
-                // System.out.print(num + " ");
-
-            } else if (num == 0) {
-                System.out.print("");
             }
-            cadenaFinal += num + " ";
+            cadenaFinal += num;
         }
         // System.out.println();
         return cadenaFinal;
@@ -94,5 +89,5 @@ public class MetodosCadena {
         return acumOrden;
 
     }
-    
+
 }
