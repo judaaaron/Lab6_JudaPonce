@@ -336,7 +336,6 @@ public class messenger_main extends javax.swing.JFrame {
                 }
 
                 JOptionPane.showMessageDialog(this, " Ha sido registrado exitosamente");
-
                 tf_nombre.setText("");
                 tf_contra.setText("");
                 tf_usuario.setText("");
