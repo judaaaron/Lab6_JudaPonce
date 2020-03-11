@@ -1,0 +1,5 @@
+
+Usuario: hola mundo 
+Maquina: olahay undomay 
+Usuario: como esta 
+Maquina: 99 111 109 111 101 115 116 97 ,
